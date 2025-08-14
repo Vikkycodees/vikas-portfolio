@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vikas Tiwari – Portfolio</title>
+  <meta name="description" content="Vikas Tiwari – Passionate skill seeker, B.Tech CSE student. Frontend skills: HTML, CSS, JavaScript." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0f16;         /* Deep dark */
+      --panel:#111827;      /* Card bg */
+      --muted:#9ca3af;      /* Muted text */
+      --text:#f3f4f6;       /* Main text */
+      --primary:#6d28d9;    /* Accent purple */
+      --primary-2:#8b5cf6;  /* Accent gradient */
+      --glow: 0 10px 35px rgba(139,92,246,.35);
+      --radius: 20px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:radial-gradient(1200px 800px at 80% -10%, rgba(109,40,217,.25), transparent), var(--bg);color:var(--text);font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* Navbar */
+    .nav{position:sticky;top:0;z-index:40;background:rgba(11,15,22,.6);backdrop-filter:saturate(140%) blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .wrap{max-width:1100px;margin:auto;padding:0 20px}
+    .nav .inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.4px}
+    .brand .logo{width:34px;height:34px;border-radius:10px;background:linear-gradient(145deg,var(--primary),var(--primary-2));box-shadow:var(--glow)}
+    .links{display:flex;gap:18px}
+    .links a{opacity:.85;padding:8px 10px;border-radius:10px}
+    .links a:hover{background:rgba(255,255,255,.06);opacity:1}
+
+    /* Hero */
+    .hero{padding:90px 0 40px}
+    .hero .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
+    .kicker{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px dashed rgba(255,255,255,.18);border-radius:999px;color:var(--muted);font-size:12px}
+    .kicker .dot{width:8px;height:8px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff, var(--primary));box-shadow:0 0 12px var(--primary)}
+    h1{font-size:48px;line-height:1.1;margin:16px 0 10px}
+    .tagline{font-family:"JetBrains Mono", monospace;font-size:18px;color:#c7d2fe;min-height:30px}
+    .lead{color:var(--muted);max-width:52ch}
+    .cta{display:flex;gap:12px;margin-top:24px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.08);background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.03));cursor:pointer}
+    .btn.primary{background:linear-gradient(145deg,var(--primary),var(--primary-2));box-shadow:var(--glow);border:none}
+    .hero .art{position:relative}
+    .glassy{position:absolute;inset:auto 0 0 0;height:60%;background:linear-gradient(180deg,rgba(109,40,217,.15),transparent 60%);filter:blur(40px);opacity:.6}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:18px}
+
+    /* Sections */
+    section{padding:70px 0}
+    .section-title{font-size:28px;margin:0 0 18px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+
+    /* About */
+    .about p{color:var(--muted)}
+
+    /* Skills */
+    .skills .chip{display:inline-flex;align-items:center;gap:8px;margin:8px 8px 0 0;padding:10px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03)}
+    .meter{height:10px;border-radius:999px;background:#0f172a;border:1px solid rgba(255,255,255,.08);overflow:hidden}
+    .meter > span{display:block;height:100%;background:linear-gradient(90deg,var(--primary),var(--primary-2))}
+
+    /* Projects */
+    .project{display:flex;flex-direction:column;gap:10px}
+    .thumb{aspect-ratio:16/9;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.1)}
+    .thumb .ph{height:100%;width:100%;background:repeating-linear-gradient(45deg,rgba(255,255,255,.06),rgba(255,255,255,.06) 10px,rgba(255,255,255,.03) 10px,rgba(255,255,255,.03) 20px)}
+    .project h3{margin:4px 0}
+    .project p{color:var(--muted);margin:0}
+    .project .tags{display:flex;flex-wrap:wrap;gap:8px}
+    .tag{font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.1);opacity:.85}
+
+    /* 3D Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .tile{position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
+    .tile::after{content:"3D Placeholder";position:absolute;bottom:10px;left:10px;font-size:12px;color:#e5e7eb;background:rgba(0,0,0,.35);padding:6px 8px;border-radius:8px}
+    .tile .ph3d{aspect-ratio:1;background:radial-gradient(200px 160px at 30% 30%, rgba(109,40,217,.45), transparent), repeating-linear-gradient(45deg, rgba(255,255,255,.05), rgba(255,255,255,.05) 8px, rgba(255,255,255,.02) 8px, rgba(255,255,255,.02) 16px)}
+
+    /* Contact */
+    form{display:grid;gap:12px}
+    input, textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.1);background:rgba(17,24,39,.7);color:var(--text)}
+    textarea{min-height:120px}
+
+    /* Footer */
+    footer{padding:30px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,.06)}
+
+    /* Reveal animations */
+    .reveal{opacity:0;transform:translateY(16px);transition:all .7s cubic-bezier(.2,.6,.2,1)}
+    .reveal.show{opacity:1;transform:none}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero .grid{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="nav">
+    <div class="wrap">
+      <div class="inner">
+        <div class="brand"><span class="logo"></span> <span>Vikas Tiwari</span></div>
+        <div class="links">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#gallery3d">3D Work</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero wrap">
+    <div class="grid">
+      <div>
+        <span class="kicker"><span class="dot"></span> B.Tech CSE • Passionate Skill Seeker</span>
+        <h1>Hi, I'm Vikas — I build clean & modern web experiences.</h1>
+        <div class="tagline" id="tagline"></div>
+        <p class="lead">I’m a first‑year Computer Science student who loves turning ideas into interactive, fast, and accessible websites. I’m growing every day and seeking meaningful opportunities to learn and contribute.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn" href="assets/Vikas_Tiwari_Resume.pdf" download>Download Résumé</a>
+        </div>
+        <div style="margin-top:16px;color:var(--muted);font-size:14px">LinkedIn & GitHub links go here → <a href="#contact" style="text-decoration:underline">send me your URLs</a>.</div>
+      </div>
+      <div class="art">
+        <div class="card">
+          <img alt="Profile placeholder" src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=1200&auto=format&fit=crop" style="border-radius:14px"/>
+          <div style="margin-top:10px;color:var(--muted);font-size:14px">Replace the image URL with your own profile picture.</div>
+        </div>
+        <div class="glassy" aria-hidden="true"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about" class="about wrap reveal">
+    <h2 class="section-title">About Me</h2>
+    <div class="grid-2">
+      <div class="card">
+        <p>Hello! I’m <strong>Vikas Tiwari</strong>, a B.Tech CSE student with a deep curiosity for how the web works. I focus on strong fundamentals and writing maintainable code. My immediate goal is to master frontend (HTML, CSS, JavaScript) and grow into full‑stack development with modern tools.</p>
+        <p>Beyond coding, I enjoy designing interfaces, learning new technologies fast, and building small projects to sharpen my skills.</p>
+      </div>
+      <div class="card">
+        <ul style="list-style:none;padding:0;margin:0;display:grid;gap:8px;color:var(--muted)">
+          <li>🎯 Goal: Become a top‑notch software engineer & blockchain developer</li>
+          <li>💡 Interests: Frontend, UI/UX, Web Performance</li>
+          <li>📍 Location: India</li>
+          <li>📚 Currently exploring: React, Git/GitHub, basic DSA</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="skills wrap reveal">
+    <h2 class="section-title">Skills</h2>
+    <div class="card">
+      <div class="chips">
+        <span class="chip">HTML</span>
+        <span class="chip">CSS</span>
+        <span class="chip">JavaScript</span>
+        <span class="chip">Git & GitHub</span>
+        <span class="chip">Responsive Design</span>
+      </div>
+      <div style="display:grid;gap:12px;margin-top:18px">
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted)"><span>HTML</span><span>Beginner → Intermediate</span></div>
+          <div class="meter"><span style="width:65%"></span></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted)"><span>CSS</span><span>Beginner → Intermediate</span></div>
+          <div class="meter"><span style="width:60%"></span></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted)"><span>JavaScript</span><span>Beginner</span></div>
+          <div class="meter"><span style="width:45%"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="wrap reveal">
+    <h2 class="section-title">Featured Projects</h2>
+    <div class="grid-3">
+      <article class="project card">
+        <div class="thumb"><div class="ph" aria-hidden="true"></div></div>
+        <h3>Project One (Placeholder)</h3>
+        <p>A responsive landing page built with semantic HTML, modern CSS layout, and vanilla JavaScript interactions.</p>
+        <div class="tags">
+          <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:6px">
+          <a class="btn" href="#" onclick="alert('Add your GitHub URL')">Source</a>
+          <a class="btn" href="#" onclick="alert('Add your live demo link')">Live</a>
+        </div>
+      </article>
+      <article class="project card">
+        <div class="thumb"><div class="ph" aria-hidden="true"></div></div>
+        <h3>Project Two (Placeholder)</h3>
+        <p>A cool navbar + hero + cards layout with smooth scrolling and scroll‑reveal animations.</p>
+        <div class="tags">
+          <span class="tag">UI/UX</span><span class="tag">Responsive</span>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:6px">
+          <a class="btn" href="#">Source</a>
+          <a class="btn" href="#">Live</a>
+        </div>
+      </article>
+      <article class="project card">
+        <div class="thumb"><div class="ph" aria-hidden="true"></div></div>
+        <h3>Project Three (Placeholder)</h3>
+        <p>Interactive components with accessible focus states and keyboard navigation.</p>
+        <div class="tags">
+          <span class="tag">Accessibility</span><span class="tag">Best Practices</span>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:6px">
+          <a class="btn" href="#">Source</a>
+          <a class="btn" href="#">Live</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 3D GALLERY PLACEHOLDERS -->
+  <section id="gallery3d" class="wrap reveal">
+    <h2 class="section-title">3D Work (Placeholders)</h2>
+    <p class="lead">Add renders or embeds from Blender/Three.js here. Replace the tiles below with your images or canvases later.</p>
+    <div class="gallery">
+      <div class="tile"><div class="ph3d" aria-hidden="true"></div></div>
+      <div class="tile"><div class="ph3d" aria-hidden="true"></div></div>
+      <div class="tile"><div class="ph3d" aria-hidden="true"></div></div>
+      <div class="tile"><div class="ph3d" aria-hidden="true"></div></div>
+      <div class="tile"><div class="ph3d" aria-hidden="true"></div></div>
+      <div class="tile"><div class="ph3d" aria-hidden="true"></div></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="wrap reveal">
+    <h2 class="section-title">Get in Touch</h2>
+    <div class="grid-2">
+      <div class="card">
+        <p style="color:var(--muted)">Have an opportunity, feedback, or just want to say hi? I’d love to hear from you.</p>
+        <ul style="list-style:none;padding:0;margin:0;display:grid;gap:8px;color:var(--muted)">
+          <li>📧 Email: <a href="mailto:rama198283@gmail.com">rama198283@gmail.com</a></li>
+          <li>📞 Phone: <a href="tel:+918052130446">+91 80521 30446</a> (optional on public sites)</li>
+          <li>💼 LinkedIn: <a href="#" onclick="alert('Add your LinkedIn URL')">Add URL</a></li>
+          <li>🐙 GitHub: <a href="#" onclick="alert('Add your GitHub URL')">Add URL</a></li>
+        </ul>
+      </div>
+      <div class="card">
+        <form action="mailto:rama198283@gmail.com" method="post" enctype="text/plain">
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="Your email" required>
+          <textarea name="message" placeholder="Your message"></textarea>
+          <button type="submit" class="btn primary" style="justify-content:center">Send Message</button>
+          <div style="color:var(--muted);font-size:12px;margin-top:6px">For a production form without mail apps, connect Formspree or a server later.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <div>© <span id="year"></span> Vikas Tiwari. All rights reserved.</div>
+      <div style="display:flex;gap:10px">
+        <a class="btn" href="#about">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Typing effect for tagline
+    const phrases = [
+      "Frontend Developer (HTML • CSS • JS)",
+      "Passionate Skill Seeker",
+      "Always Learning, Always Building"
+    ];
+    const el = document.getElementById('tagline');
+    let i=0,j=0,deleting=false;
+    function type(){
+      const current = phrases[i];
+      el.textContent = current.slice(0, j) + (j%2?"":"_");
+      if(!deleting){
+        j++;
+        if(j>current.length+8){deleting=true}
+      }else{
+        j--; if(j===0){deleting=false;i=(i+1)%phrases.length}
+      }
+      setTimeout(type, deleting?40:70);
+    }
+    type();
+
+    // Reveal on scroll
+    const obs = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');obs.unobserve(e.target)}})
+    },{threshold:.18});
+    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+    // Year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
